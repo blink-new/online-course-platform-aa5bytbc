@@ -9,8 +9,12 @@ import VideoPlayerPage from './pages/VideoPlayerPage'
 import AboutPage from './pages/AboutPage'
 import InstructorsPage from './pages/InstructorsPage'
 import ContactPage from './pages/ContactPage'
+import CertificatesPage from './pages/CertificatesPage'
+import BlogPage from './pages/BlogPage'
+import HelpPage from './pages/HelpPage'
+import SettingsPage from './pages/SettingsPage'
 
-type Page = 'home' | 'course' | 'dashboard' | 'video' | 'about' | 'instructors' | 'contact'
+type Page = 'home' | 'course' | 'dashboard' | 'video' | 'about' | 'instructors' | 'contact' | 'certificates' | 'blog' | 'help' | 'settings'
 
 interface User {
   id: string
@@ -83,6 +87,14 @@ function App() {
         return <InstructorsPage />
       case 'contact':
         return <ContactPage />
+      case 'certificates':
+        return <CertificatesPage />
+      case 'blog':
+        return <BlogPage />
+      case 'help':
+        return <HelpPage />
+      case 'settings':
+        return <SettingsPage />
       default:
         return <HomePage user={user} onNavigate={navigateTo} />
     }

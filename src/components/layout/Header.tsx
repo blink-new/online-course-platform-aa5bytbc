@@ -1,4 +1,4 @@
-import { GraduationCap, User, LogOut, Home, BookOpen, BarChart3, Users, Mail, Info } from 'lucide-react'
+import { GraduationCap, User, LogOut, Home, BookOpen, BarChart3, Users, Mail, Info, Award, HelpCircle, Settings, FileText } from 'lucide-react'
 import { blink } from '../../blink/client'
 import { Button } from '../ui/button'
 import {
@@ -18,7 +18,7 @@ interface User {
 interface HeaderProps {
   user: User
   currentPage: string
-  onNavigate: (page: 'home' | 'course' | 'dashboard' | 'video' | 'about' | 'instructors' | 'contact') => void
+  onNavigate: (page: 'home' | 'course' | 'dashboard' | 'video' | 'about' | 'instructors' | 'contact' | 'certificates' | 'blog' | 'help' | 'settings') => void
 }
 
 export default function Header({ user, currentPage, onNavigate }: HeaderProps) {
@@ -88,6 +88,17 @@ export default function Header({ user, currentPage, onNavigate }: HeaderProps) {
               <span>Contact</span>
             </button>
             <button
+              onClick={() => onNavigate('blog')}
+              className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                currentPage === 'blog'
+                  ? 'bg-primary/10 text-primary'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              <FileText className="h-4 w-4" />
+              <span>Blog</span>
+            </button>
+            <button
               onClick={() => onNavigate('dashboard')}
               className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                 currentPage === 'dashboard'
@@ -121,6 +132,19 @@ export default function Header({ user, currentPage, onNavigate }: HeaderProps) {
                 <DropdownMenuItem onClick={() => onNavigate('dashboard')}>
                   <BarChart3 className="mr-2 h-4 w-4" />
                   <span>Dashboard</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => onNavigate('certificates')}>
+                  <Award className="mr-2 h-4 w-4" />
+                  <span>Certificates</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => onNavigate('settings')}>
+                  <Settings className="mr-2 h-4 w-4" />
+                  <span>Settings</span>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={() => onNavigate('help')}>
+                  <HelpCircle className="mr-2 h-4 w-4" />
+                  <span>Help</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={handleLogout}>
