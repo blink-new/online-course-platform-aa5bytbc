@@ -1,4 +1,4 @@
-import { GraduationCap, User, LogOut, Home, BookOpen, BarChart3 } from 'lucide-react'
+import { GraduationCap, User, LogOut, Home, BookOpen, BarChart3, Users, Mail, Info } from 'lucide-react'
 import { blink } from '../../blink/client'
 import { Button } from '../ui/button'
 import {
@@ -18,7 +18,7 @@ interface User {
 interface HeaderProps {
   user: User
   currentPage: string
-  onNavigate: (page: 'home' | 'course' | 'dashboard' | 'video') => void
+  onNavigate: (page: 'home' | 'course' | 'dashboard' | 'video' | 'about' | 'instructors' | 'contact') => void
 }
 
 export default function Header({ user, currentPage, onNavigate }: HeaderProps) {
@@ -42,7 +42,7 @@ export default function Header({ user, currentPage, onNavigate }: HeaderProps) {
           </div>
 
           {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6">
             <button
               onClick={() => onNavigate('home')}
               className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
@@ -53,6 +53,39 @@ export default function Header({ user, currentPage, onNavigate }: HeaderProps) {
             >
               <Home className="h-4 w-4" />
               <span>Home</span>
+            </button>
+            <button
+              onClick={() => onNavigate('about')}
+              className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                currentPage === 'about'
+                  ? 'bg-primary/10 text-primary'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              <Info className="h-4 w-4" />
+              <span>About</span>
+            </button>
+            <button
+              onClick={() => onNavigate('instructors')}
+              className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                currentPage === 'instructors'
+                  ? 'bg-primary/10 text-primary'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              <Users className="h-4 w-4" />
+              <span>Instructors</span>
+            </button>
+            <button
+              onClick={() => onNavigate('contact')}
+              className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                currentPage === 'contact'
+                  ? 'bg-primary/10 text-primary'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              <Mail className="h-4 w-4" />
+              <span>Contact</span>
             </button>
             <button
               onClick={() => onNavigate('dashboard')}

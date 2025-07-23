@@ -6,8 +6,11 @@ import HomePage from './pages/HomePage'
 import CoursePage from './pages/CoursePage'
 import DashboardPage from './pages/DashboardPage'
 import VideoPlayerPage from './pages/VideoPlayerPage'
+import AboutPage from './pages/AboutPage'
+import InstructorsPage from './pages/InstructorsPage'
+import ContactPage from './pages/ContactPage'
 
-type Page = 'home' | 'course' | 'dashboard' | 'video'
+type Page = 'home' | 'course' | 'dashboard' | 'video' | 'about' | 'instructors' | 'contact'
 
 interface User {
   id: string
@@ -74,6 +77,12 @@ function App() {
         return <DashboardPage user={user} onNavigate={navigateTo} />
       case 'video':
         return <VideoPlayerPage courseId={selectedCourseId} user={user} onNavigate={navigateTo} />
+      case 'about':
+        return <AboutPage />
+      case 'instructors':
+        return <InstructorsPage />
+      case 'contact':
+        return <ContactPage />
       default:
         return <HomePage user={user} onNavigate={navigateTo} />
     }

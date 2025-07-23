@@ -98,20 +98,29 @@ export default function HomePage({ user, onNavigate }: HomePageProps) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Hero Section */}
-      <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-          Welcome back, {user.displayName || 'Student'}!
-        </h1>
-        <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Continue your learning journey with our comprehensive course library
-        </p>
-        <Button 
-          onClick={() => onNavigate('dashboard')}
-          size="lg" 
-          className="bg-primary hover:bg-primary/90"
-        >
-          View My Progress
-        </Button>
+      <div className="relative rounded-2xl overflow-hidden mb-12 bg-gradient-to-r from-indigo-600 to-purple-600">
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1629360021730-3d258452c425?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NzI1Njd8MHwxfHNlYXJjaHwxfHxvbmxpbmUlMjBsZWFybmluZyUyMGVkdWNhdGlvbiUyMHN0dWRlbnRzfGVufDB8MHx8fDE3NTMyOTQ0NDV8MA&ixlib=rb-4.1.0&q=80&w=1080"
+            alt="Students learning"
+            className="w-full h-full object-cover opacity-20"
+          />
+        </div>
+        <div className="relative text-center py-20 px-8">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Welcome back, {user.displayName || 'Student'}!
+          </h1>
+          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            Continue your learning journey with our comprehensive course library
+          </p>
+          <Button 
+            onClick={() => onNavigate('dashboard')}
+            size="lg" 
+            className="bg-white text-indigo-600 hover:bg-white/90"
+          >
+            View My Progress
+          </Button>
+        </div>
       </div>
 
       {/* Search and Filters */}
